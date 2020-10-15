@@ -54,3 +54,7 @@ border-radius: 5px;
 .table{
 	align-items: center;
 }
+.newBookingHidden{
+	display: none;
+
+}

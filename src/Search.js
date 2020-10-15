@@ -1,9 +1,11 @@
-
 import React, { useState } from "react";
 import SearchButton from "./SearchButton";
+import AddBookingButton from "./AddBookingButton";
+import NewBookings from "./NewBooking";
 
-const Search = ({ currentSearch }) => {
+const Search = ({ currentSearch },{handelClick}) => {
 	const [searchInput, setSearchInput] = useState("");
+	const [newBookingTrigged, setNewBookingTrigged] = useState(false);
 
 	function handleSearchInput(event) {
 		setSearchInput(event.target.value);
@@ -13,6 +15,9 @@ const Search = ({ currentSearch }) => {
 		event.preventDefault();
 		currentSearch(searchInput);
 	}
+	 function handelClick() {
+		 setNewBookingTrigged(true);
+		}
 
 	return (
 		<div className="search">
@@ -36,6 +41,14 @@ const Search = ({ currentSearch }) => {
 							<SearchButton />
 						</div>
 					</form>
+					<div style={{ marginLeft: "45%" }}>
+						<AddBookingButton handelClick={handelClick} />
+					</div>
+					<div
+						className={newBookingTrigged ? "newBookingShown" : "newBookingHidden"}
+					>
+						<NewBookings />
+					</div>
 				</div>
 			</div>
 		</div>
